@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MapTest013.html</title>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=896f9420244d0c516d6f1a842cb8262c"></script>
+
+<script type="text/javascript">
+
+	function initialize()
+	{
+		container = document.getElementById("map");
+		options = 
+		{
+			center: new kakao.maps.LatLng(37.556556, 126.919550),
+			level: 3,
+		};
+		
+		map = new kakao.maps.Map(container, options);
+		
+		// 마커가 표시될 위치(교육원 길 건너 스타벅스 → 37.55684301469964, 126.9199962672339) 구성
+		markerPosition = new kakao.maps.LatLng(37.556856, 126.919990);
+		
+		// 마커 생성
+		marker = new kakao.maps.Marker(
+		{
+			// 지도 중심 좌표에 마커가 생성될 수 있도록 구성(position)
+			position: markerPosition, 
+		});
+		
+		// 마커가 지도 위에 표시 될 수있도록 설정
+		marker.setMap(map);
+		//-- 위에서 우리가 생성한 map(→ line 20)에다가 마커를 세팅
+		
+		/*
+		
+		marker = new kakao.maps.marker(
+		{
+			position: new kakao.maps.LatLng(37.55684301469964, 126.9199962672339),
+		});
+		
+		marker.setMap(map);
+		
+		*/
+	}
+	
+	// 마커 제거 함수
+	function removeMarker()
+	{
+		// 지도 위의 마커 제거
+		marker.setMap(null);
+	}
+	
+	// 마커 다시 생성 함수
+	/*
+	function createMap()
+	{
+		// 마커가 지도 위에 표시 될 수 있도록 설정 
+		marker.setMap(map);
+	}
+	*/
+	
+	// 마커 다른곳 으로 다시 생성 함수
+	function createMarker()
+	{
+		// 마커가 표시될 위치 다시 구성
+		//-- 37.556843, 126.919996
+		markerPosition = new kakao.maps.LatLng(37.556843, 126.919996);
+		// 마커 생성
+		marker = new kakao.maps.marker(
+		{
+			position = markerPosition,
+		});
+		
+		// 마커가 지도위에 표시될 수 있도록 설정
+// 		marker.setMap(othersMarker);
+		marker.setMap(map);
+		
+	}
+	
+
+</script>
+
+</head>
+<body onload="initialize()">
+
+
+<!-- ○ 발급받은 App Key -->
+<!-- appkey=896f9420244d0c516d6f1a842cb8262c -->
+
+<!-- ○ 지도의 중심 좌표 -->
+<!-- 37.556556, 126.919550 -->
+
+<!-- ○ 교육원 길건너 스타벅스 -->
+<!-- 37.55684301469964, 126.9199962672339 -->
+<!-- 37.556843, 126.919990 -->
+
+<!-- ○ 홍대입구역 8번출구 스타벅스 -->
+<!-- 37.55684301469964, 126.9199962672339 -->
+<!-- 37.556843, 126.919996 -->
+
+
+
+
+<div>
+	<h1>Kakao Map 고정 마커 생성</h1>
+	<hr>
+</div>
+
+<!-- 지도를 그릴 공간 확보(지정) -->
+<div id="map" style="width: 100%; height: 400px;"></div>
+<br>
+
+<p>
+	<button type="button" onclick="removeMarker()">마커 제거</button>
+	<button type="button" onclick="createMarker()">마커 다시 생성</button>
+</p>
+
+
+
+
+</body>
+</html>

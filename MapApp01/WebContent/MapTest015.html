@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MapTest015.html</title>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=896f9420244d0c516d6f1a842cb8262c"></script>
+
+<script type="text/javascript">
+
+
+	function initialize()
+	{
+		container = document.getElementById("map");
+		mapCenter = new kakao.maps.LatLng(37.556556, 126.919550);
+		options = 
+		{
+			center: mapCenter,
+			level: 3,
+		};
+		
+		map = new kakao.maps.Map(container, options);
+		
+		// 마커 속성 구성
+		//imageSrc = "images/markerImg.png"; 			// 마커 이미지 경로(또는 웹 상의 주소)
+		
+// 		imageSrc = "images/markerGif02.gif";
+// 		imageSrc = "images/markerGif03.gif";
+// 		imageSrc = "images/markerGif04.gif";
+// 		imageSrc = "images/markerGif05.gif";
+// 		imageSrc = "images/markerGif06.gif";
+// 		imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png";
+		imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png";
+		
+		
+		imageSize = new kakao.maps.Size(54, 59);		// 마커 이미지 크기
+		
+		imageOption = {offset: new kakao.maps.Point(27, 69)};
+		//-- 마커 이미지에 대한 옵션
+		//   마커 좌표와 일치시킬 이미지 안에서 좌표 설정 
+		
+		// 구성한 마커의 속성을 활용하여 마커 이미지 생성
+		markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+		
+		// 마커 생성
+		marker = new kakao.maps.Marker(
+		{
+			position: mapCenter,
+			image: markerImage,  			//--추가 옵션 : 마커 이미지 설정
+				 
+		});
+		
+		// 지도에 마커가 표시될 수 있도록 설정
+		marker.setMap(map);
+		
+	}
+
+</script>
+
+</head>
+<body onload="initialize()">
+
+
+<!-- ○ 발급받은 App Key -->
+<!-- appkey=896f9420244d0c516d6f1a842cb8262c -->
+
+<!-- ○ 지도의 중심 좌표 -->
+<!-- 37.556556, 126.919550 -->
+
+<!-- ○ 교육원 길건너 스타벅스 -->
+<!-- 37.55684301469964, 126.9199962672339 -->
+<!-- 37.556843, 126.919990 -->
+
+<!-- ○ 홍대입구역 8번출구 스타벅스 -->
+<!-- 37.55684301469964, 126.9199962672339 -->
+<!-- 37.556843, 126.919996 -->
+
+
+<div>
+	<h1>Kakao Map 형태가 다른 마커 생성</h1>
+	<hr>
+</div>
+
+<!-- 지도를 그릴 공간 확보(지정) -->
+<div id="map" style="width: 100%; height: 400px;"></div>
+<br>
+
+
+
+</body>
+</html>

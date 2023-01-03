@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MapTest014</title>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=896f9420244d0c516d6f1a842cb8262c"></script>
+
+<script type="text/javascript">
+
+	function initialize()
+	{
+		container = document.getElementById("map");
+		mapCenter = new kakao.maps.LatLng(37.556556, 126.919550);
+		options = 
+		{
+			center: mapCenter,
+			level: 3,
+		};
+		
+		map = new kakao.maps.Map(container, options);
+		
+		// 마커 생성
+		marker = new kakao.maps.Marker(
+		{
+			position: mapCenter,
+		});
+		
+		// 마커가 지도에 표시될 수 있도록 설정
+		marker.setMap(map);
+		
+		
+		// check~!!
+		// 생성한 마커가 이동이 가능하도록 설정
+		marker.setDraggable(true);
+		
+		
+	}
+
+</script>
+
+
+</head>
+<body onload="initialize()">
+
+
+<!-- ○ 발급받은 App Key -->
+<!-- appkey=896f9420244d0c516d6f1a842cb8262c -->
+
+<!-- ○ 지도의 중심 좌표 -->
+<!-- 37.556556, 126.919550 -->
+
+<!-- ○ 교육원 길건너 스타벅스 -->
+<!-- 37.55684301469964, 126.9199962672339 -->
+<!-- 37.556843, 126.919990 -->
+
+<!-- ○ 홍대입구역 8번출구 스타벅스 -->
+<!-- 37.55684301469964, 126.9199962672339 -->
+<!-- 37.556843, 126.919996 -->
+
+
+
+
+<div>
+	<h1>Kakao Map 이동 가능한 마커 생성</h1>
+	<hr>
+</div>
+
+<!-- 지도를 그릴 공간 확보(지정) -->
+<div id="map" style="width: 100%; height: 400px;"></div>
+<br>
+
+
+
+</body>
+</html>

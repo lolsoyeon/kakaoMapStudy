@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MapTest017.html</title>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=896f9420244d0c516d6f1a842cb8262c"></script>
+<script type="text/javascript">
+	
+	function initialize()
+	{
+		container = document.getElementById("map");
+		mapCenter = new kakao.maps.LatLng(37.556556, 126.919550);
+		options = 
+		{
+			center: mapCenter,
+			level:3,
+			
+		};
+		
+		map = new kakao.maps.Map(container, options);
+		
+		// 마커 교육원 길건너 스타벅스
+		markerCenter = new kakao.maps.LatLng(37.556843, 126.919990);
+		
+		// 마커 생성
+		marker = new kakao.maps.Marker(
+		{
+			position: markerCenter,
+		});
+		
+		// 생성한 마커가 지도에 표시 될 수 있도록 설정
+		marker.setMap(map);
+		
+		// 인포윈도우 옵션 구성
+		var iwContent = "<div style='padding:5px;'>스타벅스 </div>";
+		var iwRemoveable = true;
+		
+		// 인포윈도우 생성
+		var infoWindow = new kakao.maps.InfoWindow(
+		{
+			content: iwContent,
+			removeable: iwRemoveable,
+			//-- 『removeable』 속성을 『true』로 설정할 경우
+			//	  인포윈도우 창을 닫을 수 있는 버튼이 활성화 된다.
+			
+		});
+
+		// check~!!
+		// 마커에 클릭 이벤트 등록
+// 		kakao.maps.event.addListener(marker, "click", 기능);
+		kakao.maps.event.addListener(marker, "click", function()
+		{
+			infoWindow.open(map, marker);
+			
+		});
+		
+	}
+
+</script>
+
+
+</head>
+<body onload="initialize()">
+
+
+<!-- ○ 발급받은 App Key -->
+<!-- appkey=896f9420244d0c516d6f1a842cb8262c -->
+
+<!-- ○ 지도의 중심 좌표 -->
+<!-- 37.556556, 126.919550 -->
+
+<!-- ○ 교육원 길건너 스타벅스 -->
+<!-- 37.55684301469964, 126.9199962672339 -->
+<!-- 37.556843, 126.919990 -->
+
+<!-- ○ 홍대입구역 8번출구 스타벅스 -->
+<!-- 37.55684301469964, 126.9199962672339 -->
+<!-- 37.556843, 126.919996 -->
+
+
+<div>
+	<h1>Kakao Map 생성한 마커에 이벤트 등록</h1>
+	<hr>
+</div>
+
+<!-- 지도를 그릴 공간 확보(지정) -->
+<div id="map" style="width: 100%; height: 400px;"></div>
+<br>
+
+</body>
+</html>

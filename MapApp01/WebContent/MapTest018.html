@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MapTest018.html</title>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=896f9420244d0c516d6f1a842cb8262c"></script>
+
+<script type="text/javascript">
+
+	function initialize()
+	{
+		container = document.getElementById("map");
+		mapCenter = new kakao.maps.LatLng(37.556556, 126.919550);
+		options = 
+		{
+			center: mapCenter,
+			level:3,
+			
+		};
+		
+		map = new kakao.maps.Map(container, options);
+		
+		// check~!!!
+		// 다중 마커를 등록할 속성 구성
+		// → 배열 처리
+		positions = 
+		[ 
+			{
+				title: "스타벅스",
+				latlng : new kakao.maps,LatLng(37.556843, 126.919990),
+			},
+			{
+				title: "더페이머스램",
+				latlng : new kakao.maps.LatLng(37.556435 , 126.919702),
+			},
+			{
+				title: "메가커피",
+				latlng: new kakao.maps.LatLng(37.555942 , 126.920919),
+				
+			}, 
+			{
+				title: "이디야",
+				latlng: new kakao.maps.LatLng(37.555600 , 126.920639),
+				
+			}, 
+			{
+				title: "소림커피",
+				latlng: new kakao.maps.LatLng(37.556241 , 126.919473),
+			} 
+		];
+		
+		// 마커 이미지 구성
+		imageSrc="http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+		imageSize = new kakao.maps.Size(24, 35);
+		
+		/*
+			marker = new kakao.maps.Marker(
+			{	
+				map :  대상맵(→ 마커가 표시되는 지도),		
+				position: 위치(→ 마커가 표시되는 위치),
+				title: 마커타이틀,
+				image: 마커이미지,
+			});
+		*/
+		
+		
+		// check~!
+		// 다중 마커 생성 → 반복문 구성
+		for (var i=0; i<positions.langth; i++)		//-- 배열방의 갯수만큼 반복
+		{
+			marker = new kakao.maps.Marker(
+			{
+				// 마커 이미지 생성
+				var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+				
+				// 마커 생성
+				marker = new kakao.maps.Marker(
+				{	
+					map :  map,						// 마커 표시 지도	
+					position: positions[i].latlng,	// 마커 표시 위치
+					title: positions[i].title,		// 마커 타이틀
+					image: markerImage,				// 마커 이미지
+				});
+			
+		}
+
+	}
+
+</script>
+
+</head>
+<body onload="initialize()">
+
+
+<!-- ○ 발급받은 App Key -->
+<!-- appkey=896f9420244d0c516d6f1a842cb8262c -->
+
+<!-- ○ 지도의 중심 좌표 -->
+<!-- 37.556556, 126.919550 -->
+
+<!-- ○ 교육원 길건너 스타벅스 -->
+<!-- 37.55684301469964, 126.9199962672339 -->
+<!-- 37.556843, 126.919990 -->
+
+<!-- ○ 더페이머스램 -->
+<!-- 37.556435113997416 , 126.91970244878007 -->
+<!-- 37.556435 , 126.919702 -->
+
+<!-- ○ 메가커피 -->
+<!-- 37.55594263945187 이고, 경도는 126.92091959856702 -->
+<!-- 37.555942 , 126.920919 -->
+
+<!-- ○ 이디야 -->
+<!-- 37.555600072757656 , 126.92063985600322 -->
+<!-- 37.555600 , 126.920639 -->
+
+<!-- ○ 소림커피 -->
+<!-- 37.55624124364327 , 126.91947347838249 -->
+<!-- 37.556241 , 126.919473 -->
+
+
+
+<div>
+	<h1>Kakao Map 다중 마커 구성 22-01-03</h1>
+	<hr>
+</div>
+
+<!-- 지도를 그릴 공간 확보(지정) -->
+<div id="map" style="width: 100%; height: 400px;"></div>
+<br>
+
+</body>
+</html>
